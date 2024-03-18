@@ -1,18 +1,18 @@
-use std::process::id;
-use anyhow::anyhow;
-use nom::bytes::complete::{tag, take_till, take_while};
-use nom::combinator::{fail, map, map_res};
-use nom::{AsChar, InputTakeAtPosition, IResult, Parser};
+
+
+use nom::bytes::complete::{tag, take_till};
+use nom::combinator::{fail, map};
+use nom::{IResult};
 use nom::branch::alt;
-use nom::character::complete::{alpha0, alpha1, alphanumeric1, multispace0, multispace1, space0};
-use nom::character::{is_alphabetic, is_space};
-use nom::character::streaming::char;
-use nom::Err::Error;
-use nom::error::{ErrorKind, VerboseError};
+use nom::character::complete::{multispace0, multispace1};
+use nom::character::{is_alphabetic};
+
+
+
 use nom::multi::many0;
-use nom::sequence::{delimited, pair, preceded, separated_pair};
-use serde_derive::Deserialize;
-use crate::ast::ConditionExpr::{AllOfIdentifier, And, Identifier, Not, OneOfIdentifier, Or, Parens};
+use nom::sequence::{delimited, preceded};
+
+use crate::ast::ConditionExpr::{AllOfIdentifier, Identifier, Not, OneOfIdentifier, Parens};
 
 
 
@@ -91,7 +91,7 @@ fn fold_exprs(initial: ConditionExpr, remainder: Vec<(Operate, ConditionExpr)>) 
 
 #[cfg(test)]
 mod test{
-    use crate::ast::{parse_expr, parse_ident};
+    use crate::ast::{parse_expr};
 
     #[test]
     pub fn test_parse_one_of(){

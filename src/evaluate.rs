@@ -1,13 +1,13 @@
 use std::collections::HashMap;
-use std::process::id;
-use anyhow::anyhow;
+
+
 use glob_match::glob_match;
-use nom::error::ParseError;
+
 use regex::Regex;
 use serde_derive::Deserialize;
 use serde_json::Value;
 use serde_yaml::{Mapping};
-use crate::ast::{ConditionExpr, parse_expr};
+use crate::ast::{ConditionExpr};
 use crate::evaluate::Matcher::{ContainsMatcher, EndsWith, EqualMatcher, ReMatcher, StartsWith};
 
 pub fn evaluate_condition_expr(expr:Box<ConditionExpr>,condition_part_results:&HashMap<String,bool>) -> bool{
@@ -156,11 +156,6 @@ impl Matcher{
 
 
 
-
-struct DetectionRule{
-    pub identifier: HashMap<String, FieldMatcher>,
-    pub condition: ConditionExpr,
-}
 
 
 

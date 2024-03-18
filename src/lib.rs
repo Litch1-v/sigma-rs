@@ -90,10 +90,10 @@ pub fn evaluate_sigma_for_json(rule:Rule,source_map_json: &str) -> bool{
 #[cfg(test)]
 mod test {
     use std::collections::HashMap;
-    use serde_yaml::Value;
+    
     use crate::ast::parse_expr;
     use crate::evaluate::{evaluate_condition_expr};
-    use crate::{evaluate_sigma, evaluate_sigma_for_json, parse_sigma};
+    use crate::{evaluate_sigma_for_json, parse_sigma};
 
     #[test]
     pub fn test_parse_one_of() {
