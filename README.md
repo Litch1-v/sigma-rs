@@ -5,8 +5,9 @@ A Rust implementation and parser of [Sigma rules](https://github.com/SigmaHQ/sig
 - support complex condition like ```(not test*) and ((1 of test1) or (all of test))```
 - regex build cache
 ## Usage
-```
-let rule = r#"title: Suspicious File Downloaded From File-Sharing Website Via Certutil.EXE#;
+```rust
+fn main() {
+    let rule = r#"title: Suspicious File Downloaded From File-Sharing Website Via Certutil.EXE#;
 let json = r#"{
     "Image": "C:\\Windows\\system32\\certutil.exe",
     "ParentImage": "C:\\WINDOWS\\system32\\cmd.exe",
@@ -17,8 +18,9 @@ let json = r#"{
     "ParentCommandLine": "\"C:\\WINDOWS\\system32\\cmd.exe\"",
     "OriginalFile": "CertUtil.exe.mui",
     "log_type": "ProcessCreate"
-  }"#
-println!("{}", evaluate_sigma(parse_sigma(rule.to_string()), &source));
+  }"#;
+    println!("{}", evaluate_sigma(parse_sigma(rule.to_string()), &source));
+}
 ```
 
 ## Reference

