@@ -5,7 +5,7 @@ repository = "https://github.com/Litch1-v/sigma-rs"
 description = "A Rust implementation and parser of Sigma rules"
 authors = ["Litch1<litch1chk@gmail.com>"]
 readme = "README.md"
-license = "GPL3"
+license = "	MIT"
 edition = "2021"
 
 
