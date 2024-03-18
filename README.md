@@ -20,3 +20,7 @@ let json = r#"{
   }"#
 println!("{}", evaluate_sigma(parse_sigma(rule.to_string()), &source));
 ```
+
+## Reference
+- [sigma-go](https://github.com/bradleyjkemp/sigma-go) 
+- [chainsaw](https://github.com/WithSecureLabs/chainsaw)
