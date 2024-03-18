@@ -1,7 +1,11 @@
 [package]
 name = "sigma-rs"
 version = "0.1.0"
-edition = "2021"
+repository = "https://github.com/Litch1-v/sigma-rs"
+description = "A Rust implementation and parser of Sigma rules"
+authors = ["Litch1<litch1chk@gmail.com>"]
+readme = "README.md"
+license = "GPL3"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
